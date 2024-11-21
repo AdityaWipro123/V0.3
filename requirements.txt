@@ -5,5 +5,5 @@ tensorflow
 joblib
 scikit-learn
 openpyxl
-xgboost
-imblanced-learn
+xgboost>=1.6,<2.2
+imbalanced-learn>=0.8,<0.10
