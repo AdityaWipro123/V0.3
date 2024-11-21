@@ -4,6 +4,7 @@ numpy
 tensorflow
 joblib
 scikit-learn
+scikeras
 openpyxl
 xgboost
 imbalanced-learn
