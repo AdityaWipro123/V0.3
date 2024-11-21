@@ -36,7 +36,7 @@ def set_random_seed(seed_value=42):
     tf.random.set_seed(seed_value)
 
 # Define the main folder path
-MAINFOLDER = r"D:/APPdata"
+MAINFOLDER = r"."
 
 # Create other paths relative to the main folder
 training_file_path = os.path.join(MAINFOLDER, "Training", "Training.xlsx")  # FIXED TRAINING DATA
@@ -55,7 +55,7 @@ st.title("Breakdown Predictor")
 st.markdown("Upload your files, and they will be preprocessed accordingly.")
 
 # File Upload Section
-#uploaded_files = st.file_uploader("Upload Excel files", type=['xlsx'], accept_multiple_files=True)
+uploaded_files = st.file_uploader("Upload Excel files", type=['xlsx'], accept_multiple_files=True)
 
 #uploaded_files = st.file_uploader("Drop files here:", accept_multiple_files=True, on_change=lambda: on_file_drop(uploaded_files))
 
@@ -96,7 +96,7 @@ def save_files(uploaded_files):
 
         status_placeholder.success("Files saved successfully!")
         # Clear uploaded files from the interface after saving   addedd extra
-        st.session_state["file_uploader_key"] += 1
+        #st.session_state["file_uploader_key"] += 1
 
 
     except Exception as e:
@@ -124,29 +124,29 @@ def save_files(uploaded_files):
 ##if st.button("Clear Last Uploaded File"):
 ##    clear_last_uploaded_file()
 
-# Initialize file uploader key in session state
-if "file_uploader_key" not in st.session_state:
-    st.session_state["file_uploader_key"] = 0
+# # Initialize file uploader key in session state
+# if "file_uploader_key" not in st.session_state:
+#     st.session_state["file_uploader_key"] = 0
 
-# File uploader
-uploaded_files = st.file_uploader("Upload your files", accept_multiple_files=True, key=str(st.session_state["file_uploader_key"]))
+# # File uploader
+# uploaded_files = st.file_uploader("Upload your files", accept_multiple_files=True, key=str(st.session_state["file_uploader_key"]))
 
-# Clear previous uploaded files display automatically before handling new uploads
+# # Clear previous uploaded files display automatically before handling new uploads
+# if st.button("Save Files"):
+#     if uploaded_files:
+#         st.session_state['uploaded_files'] = None  # Reset session state to clear display
+#         st.session_state['uploaded_files'] = uploaded_files  # Store new uploads in session state
+#         save_files(st.session_state['uploaded_files'])  # Clear old files and save new ones
+#     else:
+#         st.error("Please upload files first.")
+
+
+
 if st.button("Save Files"):
-    if uploaded_files:
-        st.session_state['uploaded_files'] = None  # Reset session state to clear display
-        st.session_state['uploaded_files'] = uploaded_files  # Store new uploads in session state
-        save_files(st.session_state['uploaded_files'])  # Clear old files and save new ones
-    else:
-        st.error("Please upload files first.")
-
-
-
-#if st.button("Save Files"):
-#    if uploaded_files:
-#        save_files(uploaded_files)
-#    else:
-#        st.error("Please upload files first.")
+   if uploaded_files:
+       save_files(uploaded_files)
+   else:
+       st.error("Please upload files first.")
 
 
 
